@@ -34,6 +34,11 @@ follows it, link-preview crawlers included. Without a prefix, the visitor's brow
 decides. An unknown prefix answers 404. Printed labels never carry a prefix, so a printed QR stays
 the same in every country.
 
+A reader handed a link (an app that scans or pastes one) drops one leading `/<lang>/` first, then
+reads the rest as above: `/fr/p/2673739332` is the product `/p/2673739332`. It never stores or
+prints the prefix: a label made from a shared link carries the bare link. The reference is
+`splitLangPrefix` in [`src/parse.ts`](../src/parse.ts).
+
 ## What a link answers
 
 ### Product link
