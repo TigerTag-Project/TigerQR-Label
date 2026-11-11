@@ -1,0 +1,537 @@
+{
+  "about": "Test vectors for TigerQR links, generated from the reference code in src/ (the code qr.tigertag.io runs). read: a path as printed or typed -> what it names. lang: a shared link's language prefix. build: an id or link typed for a kind -> the printed short link.",
+  "read": [
+    {
+      "path": "/",
+      "expect": {
+        "kind": "root"
+      }
+    },
+    {
+      "path": "/04ab12cd3e4f80",
+      "expect": {
+        "kind": "spool",
+        "spoolId": "04AB12CD3E4F80",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/04AB12CD3E4F80/",
+      "expect": {
+        "kind": "spool",
+        "spoolId": "04AB12CD3E4F80",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/12345678901234",
+      "expect": {
+        "kind": "spool",
+        "spoolId": "12345678901234",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/4ab12cd3e4f80",
+      "expect": {
+        "kind": "spool",
+        "spoolId": "04AB12CD3E4F80",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/17623456789014213",
+      "expect": {
+        "kind": "spool",
+        "spoolId": "TigerData_17623456789014213",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/4480517985",
+      "expect": {
+        "kind": "spool",
+        "spoolId": "TigerData_4480517985",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/TigerData_17623456789014213",
+      "expect": {
+        "kind": "spool",
+        "spoolId": "TigerData_17623456789014213",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/TigerData-17623456789014213",
+      "expect": {
+        "kind": "spool",
+        "spoolId": "TigerData_17623456789014213",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/TIGERDATA-17623456789014213",
+      "expect": {
+        "kind": "spool",
+        "spoolId": "TigerData_17623456789014213",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/tigerdata_4480517985",
+      "expect": {
+        "kind": "spool",
+        "spoolId": "TigerData_4480517985",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/aa394e58",
+      "expect": {
+        "kind": "product",
+        "idProduct": 2855882328,
+        "hex": "aa394e58",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/P/AA394E58",
+      "expect": {
+        "kind": "product",
+        "idProduct": 2855882328,
+        "hex": "aa394e58",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/00000000",
+      "expect": {
+        "kind": "no-product",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/FFFFFFFF",
+      "expect": {
+        "kind": "no-product",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/aa394e58.json",
+      "expect": {
+        "kind": "product",
+        "idProduct": 2855882328,
+        "hex": "aa394e58",
+        "format": "json"
+      }
+    },
+    {
+      "path": "/P/AA394E58.TTAG",
+      "expect": {
+        "kind": "product",
+        "idProduct": 2855882328,
+        "hex": "aa394e58",
+        "format": "ttag"
+      }
+    },
+    {
+      "path": "/04ab12cd3e4f80.JSON",
+      "expect": {
+        "kind": "spool",
+        "spoolId": "04AB12CD3E4F80",
+        "format": "json"
+      }
+    },
+    {
+      "path": "/17623456789014213.ttag",
+      "expect": {
+        "kind": "spool",
+        "spoolId": "TigerData_17623456789014213",
+        "format": "ttag"
+      }
+    },
+    {
+      "path": "/CLOUD_4480517985",
+      "expect": {
+        "kind": "unknown",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/1234567890123456",
+      "expect": {
+        "kind": "unknown",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/123456789",
+      "expect": {
+        "kind": "unknown",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/2673739332",
+      "expect": {
+        "kind": "product",
+        "idProduct": 2673739332,
+        "hex": "9f5e0644",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/0010303748",
+      "expect": {
+        "kind": "product",
+        "idProduct": 10303748,
+        "hex": "009d3904",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/0000137927.ttag",
+      "expect": {
+        "kind": "product",
+        "idProduct": 137927,
+        "hex": "00021ac7",
+        "format": "ttag"
+      }
+    },
+    {
+      "path": "/p/0000000000",
+      "expect": {
+        "kind": "no-product",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/2673739332.json",
+      "expect": {
+        "kind": "product",
+        "idProduct": 2673739332,
+        "hex": "9f5e0644",
+        "format": "json"
+      }
+    },
+    {
+      "path": "/p/9f5e0644",
+      "expect": {
+        "kind": "product",
+        "idProduct": 2673739332,
+        "hex": "9f5e0644",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/P/2673739332",
+      "expect": {
+        "kind": "product",
+        "idProduct": 2673739332,
+        "hex": "9f5e0644",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/P/2673739332.JSON",
+      "expect": {
+        "kind": "product",
+        "idProduct": 2673739332,
+        "hex": "9f5e0644",
+        "format": "json"
+      }
+    },
+    {
+      "path": "/p/137927",
+      "expect": {
+        "kind": "product",
+        "idProduct": 137927,
+        "hex": "00021ac7",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/10303748",
+      "expect": {
+        "kind": "product",
+        "idProduct": 271595336,
+        "hex": "10303748",
+        "format": "page",
+        "idProductAlt": 10303748
+      }
+    },
+    {
+      "path": "/p/0",
+      "expect": {
+        "kind": "no-product",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/4294967295",
+      "expect": {
+        "kind": "no-product",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/4294967296",
+      "expect": {
+        "kind": "unknown",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/12345678901",
+      "expect": {
+        "kind": "unknown",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/r/0001",
+      "expect": {
+        "kind": "unknown",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/p/aa394e5",
+      "expect": {
+        "kind": "unknown",
+        "format": "page"
+      }
+    },
+    {
+      "path": "/%E0%A4%A",
+      "expect": {
+        "kind": "unknown",
+        "format": "page"
+      }
+    }
+  ],
+  "lang": [
+    {
+      "path": "/fr/p/2673739332",
+      "expect": {
+        "lang": "fr",
+        "path": "/p/2673739332"
+      }
+    },
+    {
+      "path": "/PT-PT/1d33dbda0d1080.json",
+      "expect": {
+        "lang": "pt-pt",
+        "path": "/1d33dbda0d1080.json"
+      }
+    },
+    {
+      "path": "/pt/6130922252",
+      "expect": {
+        "lang": "pt",
+        "path": "/6130922252"
+      }
+    },
+    {
+      "path": "/fr",
+      "expect": {
+        "lang": "fr",
+        "path": "/"
+      }
+    },
+    {
+      "path": "/p/2673739332",
+      "expect": {
+        "lang": null,
+        "path": "/p/2673739332"
+      }
+    },
+    {
+      "path": "/xx/p/2673739332",
+      "expect": {
+        "lang": null,
+        "path": "/xx/p/2673739332"
+      }
+    },
+    {
+      "path": "/french/p/1",
+      "expect": {
+        "lang": null,
+        "path": "/french/p/1"
+      }
+    }
+  ],
+  "build": [
+    {
+      "kind": "chip",
+      "input": "1d33dbda0d1080",
+      "expect": {
+        "kind": "chip",
+        "link": "https://qr.tigertag.io/1d33dbda0d1080"
+      }
+    },
+    {
+      "kind": "chip",
+      "input": "1D:33:DB:DA:0D:10:80",
+      "expect": {
+        "kind": "chip",
+        "link": "https://qr.tigertag.io/1d33dbda0d1080"
+      }
+    },
+    {
+      "kind": "chip",
+      "input": "4ab12cd3e4f80",
+      "expect": {
+        "kind": "chip",
+        "link": "https://qr.tigertag.io/04ab12cd3e4f80"
+      }
+    },
+    {
+      "kind": "data",
+      "input": "TigerData_6130922252",
+      "expect": {
+        "kind": "data",
+        "link": "https://qr.tigertag.io/6130922252"
+      }
+    },
+    {
+      "kind": "data",
+      "input": "6130922252",
+      "expect": {
+        "kind": "data",
+        "link": "https://qr.tigertag.io/6130922252"
+      }
+    },
+    {
+      "kind": "data",
+      "input": "17941702052264512",
+      "expect": {
+        "kind": "data",
+        "link": "https://qr.tigertag.io/17941702052264512"
+      }
+    },
+    {
+      "kind": "product",
+      "input": "2673739332",
+      "expect": {
+        "kind": "product",
+        "link": "https://qr.tigertag.io/p/2673739332"
+      }
+    },
+    {
+      "kind": "product",
+      "input": "10303748",
+      "expect": {
+        "kind": "product",
+        "link": "https://qr.tigertag.io/p/0010303748"
+      }
+    },
+    {
+      "kind": "product",
+      "input": "9f5e0644",
+      "expect": {
+        "kind": "product",
+        "link": "https://qr.tigertag.io/p/2673739332"
+      }
+    },
+    {
+      "kind": "product",
+      "input": "0",
+      "expect": null
+    },
+    {
+      "kind": "product",
+      "input": "4294967295",
+      "expect": null
+    },
+    {
+      "kind": "chip",
+      "input": "qr.tigertag.io/p/9f5e0644",
+      "expect": {
+        "kind": "product",
+        "link": "https://qr.tigertag.io/p/2673739332"
+      }
+    },
+    {
+      "kind": "product",
+      "input": "https://qr.tigertag.io/TigerData_6130922252.json",
+      "expect": {
+        "kind": "data",
+        "link": "https://qr.tigertag.io/6130922252"
+      }
+    },
+    {
+      "kind": "data",
+      "input": "https://qr.tigertag.io/fr/p/2673739332",
+      "expect": {
+        "kind": "product",
+        "link": "https://qr.tigertag.io/p/2673739332"
+      }
+    },
+    {
+      "kind": "chip",
+      "input": "xyz",
+      "expect": null
+    },
+    {
+      "kind": "data",
+      "input": "12345",
+      "expect": null
+    }
+  ],
+  "spoolLink": [
+    {
+      "docId": "TigerData_6130922252",
+      "expect": "https://qr.tigertag.io/6130922252"
+    },
+    {
+      "docId": "TigerData_17941702052264512",
+      "expect": "https://qr.tigertag.io/17941702052264512"
+    },
+    {
+      "docId": "1D33DBDA0D1080",
+      "expect": "https://qr.tigertag.io/1d33dbda0d1080"
+    },
+    {
+      "docId": "CLOUD_abc",
+      "expect": null
+    }
+  ],
+  "productLink": [
+    {
+      "id_product": 2673739332,
+      "expect": "https://qr.tigertag.io/p/2673739332"
+    },
+    {
+      "id_product": 10303748,
+      "expect": "https://qr.tigertag.io/p/0010303748"
+    },
+    {
+      "id_product": 1,
+      "expect": "https://qr.tigertag.io/p/0000000001"
+    },
+    {
+      "id_product": 0,
+      "expect": null
+    },
+    {
+      "id_product": 4294967295,
+      "expect": null
+    }
+  ],
+  "sharedLink": [
+    {
+      "link": "https://qr.tigertag.io/p/2673739332",
+      "lang": "fr",
+      "expect": "https://qr.tigertag.io/fr/p/2673739332"
+    },
+    {
+      "link": "https://qr.tigertag.io/6130922252",
+      "lang": "pt-pt",
+      "expect": "https://qr.tigertag.io/pt-pt/6130922252"
+    }
+  ]
+}
