@@ -43,8 +43,8 @@ Links are printed lowercase and read in any case.
 ## Make a label
 
 - In Tiger Studio: the Spool Label for your own spool, the Filament Label for a catalogue product.
-- On the web, from the catalogue, every format at once:
-  [tigersystem.io/en/tiger-qr-labels](https://tigersystem.io/en/tiger-qr-labels#label-generator).
+- On the web, from the catalogue, every format at once: the TigerQR Playground,
+  [tigersystem.io/en/playground-tigerqr](https://tigersystem.io/en/playground-tigerqr).
 - From code, any catalogue product by its id:
   `GET https://tigersystem.io/api/public/v1/label/<id>.svg?template=<format>&dpi=<203|300>`
   ([example](https://tigersystem.io/api/public/v1/label/2673739332.svg?template=qrOnly)),
