@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TigerQR Label: QR labels and qr.tigertag.io links for filament spools</title>
+<meta name="description" content="The public reference of TigerQR and TigerQR+, the QR labels of the TigerTag ecosystem: the three qr.tigertag.io links, the nine label formats, the encoding, test vectors and reference code.">
+<link rel="canonical" href="{{site}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TigerQR Label">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="{{site}}">
+<meta property="og:title" content="TigerQR Label: the QR label of the TigerTag ecosystem">
+<meta property="og:description" content="Three qr.tigertag.io links, nine label formats, one QR that opens on any phone with no app. Spec, test vectors and reference code.">
+<meta property="og:image" content="https://tigersystem.io/en/tiger-qr-labels/opengraph-image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="TigerQR+ labels for a Polymaker filament spool">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TigerQR Label: the QR label of the TigerTag ecosystem">
+<meta name="twitter:description" content="Three qr.tigertag.io links, nine label formats, one QR that opens on any phone with no app.">
+<meta name="twitter:image" content="https://tigersystem.io/en/tiger-qr-labels/opengraph-image">
+<meta name="theme-color" content="#14161a">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<script>
+  /* The chosen theme, applied before the page is drawn so it never flashes. */
+  try { var t = localStorage.getItem("tigertag-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+  (function () { var r = document.documentElement; r.dataset.shown = r.dataset.theme || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"); })();
+</script>
+<link rel="stylesheet" href="site.css?v={{v:site.css}}">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script src="site.js?v={{v:site.js}}" defer></script>
+<script type="module" src="app.js?v={{v:app.js}}"></script>
+<script type="application/ld+json">{{jsonld}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <div class="wrap">
+    <a class="brandmark" href="./" aria-label="TigerQR Label">
+      <img class="logo-dark" src="assets/logo-tigertag-white.svg" alt="" width="61" height="34">
+      <img class="logo-light" src="assets/logo-tigertag-black.svg" alt="" width="61" height="34">
+      <span>Tiger<b>QR</b> Label</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#links">Links</a>
+      <a href="#formats">Formats</a>
+      <a href="#kinds">Labels</a>
+      <a href="#technical">Technical</a>
+      <a href="#generator">Generator</a>
+      <a href="#api">Label API</a>
+      <a href="#developers">Developers</a>
+    </nav>
+    <div class="tools">
+      <a class="iconbtn" href="https://github.com/TigerTag-Project/TigerQR-Label" aria-label="TigerQR-Label on GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <button class="iconbtn themebtn" id="themebtn" type="button" aria-label="Light or dark theme" title="Light or dark theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero wrap" style="margin-top:40px">
+    <div class="intro">
+      <h1><span class="kicker">The QR label of the TigerTag ecosystem</span><span class="name">Tiger<span>QR</span></span></h1>
+      <p class="headline">One sticker on a filament spool. One scan opens the right page, on any phone, with no app.</p>
+      <p class="lead"><b>TigerQR+</b> is the label linked to a product of the TigerTag+ catalogue; <b>TigerQR</b> is the label that is not, the same logic as TigerTag and TigerTag+. This site is the public reference for what a label prints and what its <code>qr.tigertag.io</code> link means.</p>
+      <div class="ctas">
+        <a class="btn primary big" href="https://tigersystem.io/playground-tigerqr">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>
+          Open the TigerQR Playground
+        </a>
+        <a class="btn" href="https://github.com/TigerTag-Project/TigerQR-Label#readme">Read the spec</a>
+        <a class="btn" href="#generator">Build a link</a>
+      </div>
+    </div>
+    <div class="stage" aria-label="TigerQR+ Spool Labels in four formats">
+      <img class="l-vertical" src="assets/float/float-vertical-30x40.webp" alt="A Vertical TigerQR+ Spool Label, 30 by 40 mm" width="600" height="800" fetchpriority="high">
+      <img class="l-classic" src="assets/float/float-classic-40x30.webp" alt="A Classic TigerQR+ Spool Label, 40 by 30 mm" width="800" height="600" fetchpriority="high">
+      <img class="l-slim" src="assets/float/float-slim-40x12.webp" alt="A Slim TigerQR+ Spool Label, 40 by 12 mm" width="800" height="240">
+      <img class="l-qr" src="assets/float/float-qr-only-25x30.webp" alt="A QR only TigerQR+ label, 25 by 30 mm" width="500" height="600">
+    </div>
+  </section>
+
+  <section class="facts wrap" aria-label="TigerQR in four numbers" style="margin-top:40px">
+    <div class="fact"><b>3 links</b><span>a spool with a chip, a spool without a chip, a catalogue product</span></div>
+    <div class="fact"><b>9 formats</b><span>from 40 × 12 mm to 50 × 30 mm, Tiger Studio and tigersystem.io alike</span></div>
+    <div class="fact"><b>29 × 29</b><span>modules for every spool and product link: one byte segment, error correction M</span></div>
+    <div class="fact"><b>203 / 300 dpi</b><span>every QR module on a whole number of printer dots</span></div>
+  </section>
+
+  <section id="links" class="wrap">
+    <h2>One scan, three links</h2>
+    <p class="sub">Every label points to <code>https://qr.tigertag.io/</code>. The path alone says what it is, so an app reads it offline, without the website. Links are printed lowercase and read in any case.</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="cardhead"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg><h3>A spool with a chip</h3></div>
+        <span class="pill">TigerTag · TigerTag+</span>
+        <a class="linkbig" href="https://qr.tigertag.io/1d33dbda0d1080">qr.tigertag.io/<span>1d33dbda0d1080</span></a>
+        <p>The chip's NFC UID in hex, 14 characters. The twin chip's UID opens the same spool.</p>
+      </div>
+      <div class="card">
+        <div class="cardhead"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6"/></svg><h3>A spool without a chip</h3></div>
+        <span class="pill">TigerData · TigerData+</span>
+        <a class="linkbig" href="https://qr.tigertag.io/6130922252">qr.tigertag.io/<span>6130922252</span></a>
+        <p>The TigerData id without its <code>TigerData_</code> prefix: 10 or 17 digits. The long form <code>TigerData_6130922252</code> opens too.</p>
+      </div>
+      <div class="card">
+        <div class="cardhead"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7M12 11v10"/></svg><h3>A catalogue product</h3></div>
+        <span class="pill">TigerQR+ · public</span>
+        <a class="linkbig" href="https://qr.tigertag.io/p/2673739332">qr.tigertag.io/<span>p/2673739332</span></a>
+        <p>The <code>id_product</code> in decimal, always 10 digits with leading zeros (<a href="https://qr.tigertag.io/p/0010303748">p/0010303748</a>). Labels printed with 8 hex characters (<a href="https://qr.tigertag.io/p/9f5e0644">p/9f5e0644</a>) still open.</p>
+      </div>
+    </div>
+
+    <div class="grid2 mt">
+      <div class="card">
+        <h3>Who gets what</h3>
+        <div class="tablewrap" style="margin-top:12px">
+          <table>
+            <thead><tr><th>Link</th><th>Its owner, signed in</th><th>Anyone else</th></tr></thead>
+            <tbody>
+              <tr><td>Spool</td><td>the spool</td><td>the spool's catalogue product and the owner's display name, never the spool</td></tr>
+              <tr><td>Product</td><td colspan="2">the catalogue product, for everyone, with no sign-in</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small mt">The owner signs in to their TigerSystem account. A spool with no catalogue product shows a private page to anyone but its owner. The weight, the note and the rack never leave.</p>
+      </div>
+      <div class="card">
+        <h3>Endings for tools: <code>.json</code> and <code>.ttag</code></h3>
+        <p>Add <code>.json</code> (the data) or <code>.ttag</code> (the file Tiger Studio imports) to any link to build your own interface:
+          <a href="https://qr.tigertag.io/p/2673739332.json">p/2673739332.json</a>,
+          <a href="https://qr.tigertag.io/p/2673739332.ttag">p/2673739332.ttag</a>.</p>
+        <ul class="plain">
+          <li>On a product link: the catalogue record (<code>?lang=</code> picks the text language), cacheable, from any origin.</li>
+          <li>On a spool link: the spool for its owner (<code>Authorization: Bearer &lt;ID token&gt;</code>); anyone else is sent (303) to the product's <code>.json</code> / <code>.ttag</code>, or gets a 404 without a product.</li>
+          <li>A product that left the catalogue answers <code>{"error":"not-in-catalogue"}</code> with status 404.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card mt">
+      <h3>Shared links carry a language, printed labels never do</h3>
+      <p>A link shared from a Share button may start with the sharer's language: <a href="https://qr.tigertag.io/fr/p/2673739332"><code>qr.tigertag.io/fr/p/2673739332</code></a>. The page and its preview on social networks then open in that language for everyone, link-preview crawlers included. Without a prefix, the visitor's browser language decides; an unknown prefix answers 404.</p>
+      <p>The prefix is one of <code>en</code> <code>fr</code> <code>de</code> <code>es</code> <code>it</code> <code>zh</code> <code>pt</code> <code>pt-pt</code> <code>pl</code> <code>ru</code> <code>nl</code>. A reader handed a link drops one leading <code>/&lt;lang&gt;/</code> first, then reads the rest, and never stores or prints it: a label made from a shared link carries the bare link, so a printed QR stays the same in every country.</p>
+    </div>
+
+    <h3 class="mt" style="margin-top:32px">What a scan opens</h3>
+    <div class="diagram">
+      <svg viewBox="0 0 1000 456" role="img" aria-labelledby="flow-t">
+        <title id="flow-t">What a scan of a qr.tigertag.io link opens: a spool link gives the spool to its signed-in owner and the product to anyone else; a product link gives the product to everyone.</title>
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor" style="color:var(--muted)"/></marker></defs>
+        <rect class="box start" x="340" y="8" width="320" height="64" rx="14"/>
+        <text x="500" y="36" text-anchor="middle">QR scanned</text>
+        <text class="c" x="500" y="58" text-anchor="middle">qr.tigertag.io/&lt;path&gt;</text>
+        <path class="wire" d="M500 72V100H180V138" marker-end="url(#ar)"/>
+        <path class="wire" d="M500 100V138" marker-end="url(#ar)"/>
+        <path class="wire" d="M500 100H820V138" marker-end="url(#ar)"/>
+        <text class="c" x="190" y="124">/&lt;14 hex&gt;</text>
+        <text class="c" x="510" y="124">/&lt;10 or 17 digits&gt;</text>
+        <text class="c" x="830" y="124">/p/&lt;10 digits&gt;</text>
+        <rect class="box priv" x="40" y="140" width="280" height="64" rx="14"/>
+        <text x="180" y="167" text-anchor="middle">Spool with a chip</text>
+        <text class="m" x="180" y="189" text-anchor="middle">TigerTag · TigerTag+</text>
+        <rect class="box priv" x="360" y="140" width="280" height="64" rx="14"/>
+        <text x="500" y="167" text-anchor="middle">Spool without a chip</text>
+        <text class="m" x="500" y="189" text-anchor="middle">TigerData · TigerData+</text>
+        <rect class="box pub" x="680" y="140" width="280" height="64" rx="14"/>
+        <text x="820" y="167" text-anchor="middle">Catalogue product, public</text>
+        <text class="m" x="820" y="189" text-anchor="middle">page · .json · .ttag</text>
+        <path class="wire" d="M180 204V232H340V262" marker-end="url(#ar)"/>
+        <path class="wire" d="M500 204V232H340"/>
+        <rect class="box priv" x="190" y="264" width="300" height="64" rx="14"/>
+        <text x="340" y="292" text-anchor="middle">Is the spool's owner</text>
+        <text x="340" y="313" text-anchor="middle">signed in?</text>
+        <path class="wire" d="M340 328V356H180V384" marker-end="url(#ar)"/>
+        <path class="wire" d="M340 356H560V384" marker-end="url(#ar)"/>
+        <text class="m" x="190" y="374">yes</text>
+        <text class="m" x="570" y="374">no</text>
+        <rect class="box priv" x="40" y="386" width="280" height="64" rx="14"/>
+        <text x="180" y="413" text-anchor="middle">Their spool</text>
+        <text class="m" x="180" y="435" text-anchor="middle">page · .json · .ttag</text>
+        <rect class="box pub" x="380" y="386" width="360" height="64" rx="14"/>
+        <text x="560" y="413" text-anchor="middle">The product and the owner's name</text>
+        <text class="m" x="560" y="435" text-anchor="middle">.json / .ttag: 303 to the product's /p/ link</text>
+      </svg>
+      <div class="legend"><span><i class="sw priv"></i>private to the spool's owner</span><span><i class="sw pub"></i>public</span></div>
+    </div>
+  </section>
+
+  <section id="formats" class="wrap">
+    <h2>Nine label formats</h2>
+    <p class="sub">The common spool-label sizes and layouts. Every app draws the same SVG, so a label printed from Tiger Studio or from tigersystem.io looks and scans the same. Every example below decodes to its link.</p>
+    <div class="tabs" role="tablist" aria-label="Which label">
+      <button type="button" class="tab" role="tab" aria-selected="true" data-set="filament">Filament Label · TigerQR+</button>
+      <button type="button" class="tab" role="tab" aria-selected="false" data-set="spool/tigerqr-plus">Spool Label · TigerQR+</button>
+      <button type="button" class="tab" role="tab" aria-selected="false" data-set="spool/tigerqr">Spool Label · TigerQR</button>
+    </div>
+    <p class="meta" id="set-link">QR: <code>https://qr.tigertag.io/p/0027996997</code>, a Polymaker Panchroma Gradient Silk Fire</p>
+    <div class="gallery">
+{{formats}}
+    </div>
+    <figure class="figure mt" style="margin-top:28px">
+      <img src="assets/formats.svg" alt="The nine TigerQR label formats side by side, at their true proportions" width="1200" height="678" loading="lazy">
+      <figcaption>The nine formats at their true proportions (Filament Label, TigerQR+).</figcaption>
+    </figure>
+  </section>
+
+  <section id="kinds" class="wrap">
+    <h2>Spool Label or Filament Label, TigerQR or TigerQR+</h2>
+    <p class="sub">Two kinds of label, one set of formats. The pill in the corner says whether the label is linked to the catalogue.</p>
+    <div class="grid2">
+      <figure class="figure card">
+        <img src="assets/spool-vs-filament-label.svg" alt="A Spool Label holding a spool link and a Filament Label holding a product link" width="1000" height="574" loading="lazy">
+        <figcaption><b>Spool Label</b>: for a spool of your inventory, its QR is the spool link. <b>Filament Label</b>: for a catalogue product (a swatch, a shelf, a showroom), its QR is the product link and it opens the product for everyone.</figcaption>
+      </figure>
+      <figure class="figure card">
+        <img src="assets/tigerqr-vs-tigerqr-plus.svg" alt="The same Spool Label with the TigerQR pill and with the TigerQR+ pill" width="1000" height="550" loading="lazy">
+        <figcaption><b>TigerQR+</b> when the label's reference is a catalogue product (a real <code>id_product</code>) or a TigerTag+ chip; every Filament Label is TigerQR+. <b>TigerQR</b> otherwise, so a TigerTag chip with no product gives TigerQR. The pill does not say whether the spool has a chip.</figcaption>
+      </figure>
+    </div>
+    <div class="card mt">
+      <h3>What a label carries</h3>
+      <ul class="plain">
+        <li>the brand; the series in white on a black bar (the material when there is no series);</li>
+        <li>the colour name and its hex code(s);</li>
+        <li>the TigerQR or TigerQR+ pill;</li>
+        <li>up to four value slots on Classic, Wide and Vertical: nozzle, bed and drying temperatures, then TD or diameter;</li>
+        <li>the QR code, and nothing in clear next to it.</li>
+      </ul>
+      <p class="mt">Only what does not change: never the remaining weight, the note, the rack or the owner. <b>QR only</b> prints the pill centred at the top over the QR, and nothing else.</p>
+    </div>
+  </section>
+
+  <section id="technical" class="wrap">
+    <h2>How a label is drawn</h2>
+    <p class="sub">The rules that make a label scan on every phone camera and print sharp on a thermal printer.</p>
+    <div class="grid3">
+      <div class="card">
+        <h3>One byte segment, ECC M</h3>
+        <p>The whole link, lowercase, in one byte-mode segment with error correction level M (15 %): labels get scratched and folded. A lowercase scheme cannot use the alphanumeric mode, and splitting the link into segments saves nothing.</p>
+      </div>
+      <div class="card">
+        <h3>29 × 29 modules</h3>
+        <p>Every spool and product link fits a version 3 code, 29 × 29 modules. The label's white margins are its quiet zone.</p>
+      </div>
+      <div class="card">
+        <h3>Lowercase, always</h3>
+        <p>Tested 2026-11-07: the iPhone camera opens a link in either case, but the Samsung camera (Galaxy S24) shows an uppercase <code>HTTPS://</code> link as plain text and opens only a lowercase one.</p>
+      </div>
+      <div class="card">
+        <h3>Whole printer dots per module</h3>
+        <p>Each module covers a whole number of dots: the nearest one that fills the QR box, rounded up when that stays within 6 % of the box, down otherwise. A PNG is drawn at exactly the label's size in dots, never resampled.</p>
+      </div>
+      <div class="card">
+        <h3>Tenths of a millimetre</h3>
+        <p>One SVG per label, sized in millimetres, laid out in tenths of a millimetre and scaled to printer dots at 203 or 300 dpi.</p>
+      </div>
+      <div class="card">
+        <h3>Texts keep clear</h3>
+        <p>Texts never run over the QR or the pill: a long text shrinks first, then is narrowed. Tiger Studio and tigersystem.io draw the same SVG, byte for byte.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px">Printer dots per module</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Format</th><th>Id</th><th>Size</th><th>203 dpi</th><th>300 dpi</th></tr></thead>
+        <tbody>
+{{dots}}
+        </tbody>
+      </table>
+    </div>
+    <p class="small mt">Label size in dots, dots per module and the QR's printed side, for a 29 × 29 code.</p>
+
+    <div class="grid2" style="margin-top:32px">
+      <div class="card">
+        <h3>Reading a link</h3>
+        <p>The order a reader follows, as <code>splitLangPrefix</code> and <code>parseQrPath</code> in <a href="https://github.com/TigerTag-Project/TigerQR-Label/blob/main/src/parse.ts"><code>src/parse.ts</code></a> do it.</p>
+        <ol class="metro">
+          <li><span class="st">1</span><b>Drop a language prefix</b><p>A shared link's leading <code>/&lt;lang&gt;/</code>, in any case.</p></li>
+          <li><span class="st">2</span><b>Normalise the path</b><p>Percent-decode, drop leading and trailing <code>/</code>; an empty path is the root.</p></li>
+          <li><span class="st">3</span><b>Take the ending</b><p>One <code>.json</code> or <code>.ttag</code>, any case; else a page.</p></li>
+          <li><span class="st">4</span><b>Product, older form</b><p><code>p/</code> + 8 hex: the hex value (8 digits: the decimal reading is tried when the hex one is not in the catalogue).</p></li>
+          <li><span class="st">5</span><b>Product, printed form</b><p><code>p/</code> + 1 to 10 digits: the decimal value; above 4294967295 is unknown.</p></li>
+          <li><span class="st">6</span><b>Spool</b><p>10 or 17 digits, then 14 hex, then 13 hex starting with <code>4</code> (a leading 0 put back), then <code>tigerdata_</code> / <code>tigerdata-</code> + digits.</p></li>
+          <li><span class="st">7</span><b>Anything else</b><p>A label from a newer version: say "update the app" instead of failing.</p></li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>What each shape names</h3>
+        <div class="tablewrap" style="margin-top:12px">
+          <table>
+            <thead><tr><th>Path</th><th>Names</th></tr></thead>
+            <tbody>
+              <tr><td><code>p/&lt;8 hex&gt;</code></td><td>a product, older labels</td></tr>
+              <tr><td><code>p/&lt;1 to 10 digits&gt;</code></td><td>a product, printed on 10 digits</td></tr>
+              <tr><td><code>p/0</code>, <code>p/00000000</code>, <code>p/ffffffff</code>, <code>p/4294967295</code></td><td>"no product", never printed, 404</td></tr>
+              <tr><td><code>&lt;14 hex&gt;</code></td><td>a spool with a chip, id: the UID uppercase</td></tr>
+              <tr><td><code>&lt;13 hex starting with 4&gt;</code></td><td>a chip UID that lost its leading 0</td></tr>
+              <tr><td><code>&lt;10 digits&gt;</code>, <code>&lt;17 digits&gt;</code></td><td>a spool without a chip, id: <code>TigerData_&lt;digits&gt;</code></td></tr>
+              <tr><td><code>tigerdata_&lt;digits&gt;</code>, <code>tigerdata-&lt;digits&gt;</code></td><td>the same, long form</td></tr>
+              <tr><td>anything else</td><td>unknown: "update the app" (404)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small mt">A chip UID has 14 characters and a TigerData id 10 or 17 digits, so an all-digit UID is never read as a TigerData id. A product link always starts with <code>p/</code>, so it never collides with a spool.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="generator" class="wrap">
+    <h2>Build a link, read a link</h2>
+    <p class="sub">Both tools run the reference code of <a href="https://github.com/TigerTag-Project/TigerQR-Label/tree/main/src"><code>src/</code></a>, the code <code>qr.tigertag.io</code> runs, in your browser. The QR is drawn the way a label draws it: one byte segment, ECC M.</p>
+    <div class="tool">
+      <div class="card">
+        <h3>Link generator</h3>
+        <div class="f2">
+          <label class="f"><span>What it is</span>
+            <select id="g-kind">
+              <option value="product">A catalogue product (id_product)</option>
+              <option value="chip">A spool with a chip (UID)</option>
+              <option value="data">A spool without a chip (TigerData id)</option>
+            </select>
+          </label>
+          <label class="f"><span>Shared in a language (never printed)</span>
+            <select id="g-lang">
+              <option value="">No language: the printed link</option>
+              <option>en</option><option>fr</option><option>de</option><option>es</option><option>it</option><option>zh</option><option>pt</option><option>pt-pt</option><option>pl</option><option>ru</option><option>nl</option>
+            </select>
+          </label>
+        </div>
+        <label class="f"><span id="g-hint">id_product in decimal, or the 8 hex characters of an older label, or a whole link</span><input id="g-in" type="text" value="27996997" autocomplete="off" spellcheck="false"></label>
+        <div class="chips" id="g-samples">
+          <button type="button" class="chip" data-kind="product" data-v="27996997">27996997</button>
+          <button type="button" class="chip" data-kind="chip" data-v="1D:33:DB:DA:0D:10:80">1D:33:DB:DA:0D:10:80</button>
+          <button type="button" class="chip" data-kind="data" data-v="TigerData_6130922252">TigerData_6130922252</button>
+          <button type="button" class="chip" data-kind="product" data-v="https://qr.tigertag.io/fr/p/9f5e0644">qr.tigertag.io/fr/p/9f5e0644</button>
+        </div>
+        <div class="out">
+          <div class="qrbox" id="g-qr" aria-label="QR code of the link"></div>
+          <div>
+            <p class="result" id="g-out" aria-live="polite"></p>
+            <p class="meta" id="g-meta"></p>
+            <div class="actions" id="g-actions"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Link reader</h3>
+        <label class="f"><span>A link or a path, as scanned, pasted or typed</span><input id="r-in" type="text" value="https://qr.tigertag.io/FR/P/0027996997.JSON" autocomplete="off" spellcheck="false"></label>
+        <div class="chips" id="r-samples">
+          <button type="button" class="chip" data-v="qr.tigertag.io/4ab12cd3e4f80">/4ab12cd3e4f80</button>
+          <button type="button" class="chip" data-v="qr.tigertag.io/TigerData-17623456789014213">/TigerData-17623456789014213</button>
+          <button type="button" class="chip" data-v="qr.tigertag.io/p/aa394e58">/p/aa394e58</button>
+          <button type="button" class="chip" data-v="qr.tigertag.io/p/ffffffff">/p/ffffffff</button>
+          <button type="button" class="chip" data-v="qr.tigertag.io/r/12">/r/12</button>
+        </div>
+        <pre class="json" id="r-out" aria-live="polite"></pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="api" class="wrap">
+    <h2>The public label API</h2>
+    <p class="sub">Any catalogue product's label, from its id alone, drawn by tigersystem.io with the same renderer as Tiger Studio. No key, no sign-in.</p>
+    <div class="tool">
+      <div class="card">
+        <pre class="wrapcode"><code>GET https://tigersystem.io/api/public/v1/label/&lt;id&gt;.svg?template=&lt;format&gt;&amp;dpi=&lt;203|300&gt;
+GET https://tigersystem.io/api/public/v1/label/&lt;id&gt;.json
+GET https://tigersystem.io/api/public/v1/label/&lt;id&gt;.html</code></pre>
+        <ul class="plain">
+          <li><code>.svg</code>: the label, sized in millimetres; <code>template</code> is a format id (<code>classic</code> by default), <code>dpi</code> 203 or 300, <code>unit=dots</code> sizes it in printer dots (a PNG's source), <code>lang</code> picks the language of the slot words.</li>
+          <li><code>.json</code>: what the label prints, its QR link, its catalogue page and the SVG URL of every format.</li>
+          <li><code>.html</code>: a widget to frame on any site (<code>theme=light|dark</code>), documented on <a href="https://tigersystem.io/en/embed">tigersystem.io/en/embed</a>.</li>
+        </ul>
+        <div class="f2 mt">
+          <label class="f"><span>Product id</span><input id="a-id" type="text" value="27996997" inputmode="numeric" autocomplete="off"></label>
+          <label class="f"><span>Format and resolution</span>
+            <span class="f2" style="gap:8px">
+              <select id="a-tpl" aria-label="Format"></select>
+              <select id="a-dpi" aria-label="Resolution"><option>203</option><option selected>300</option></select>
+            </span>
+          </label>
+        </div>
+        <div class="actions" id="a-links"></div>
+      </div>
+      <div class="apiprev"><img id="a-img" alt="The label drawn by the public label API" src="https://tigersystem.io/api/public/v1/label/27996997.svg?template=classic&amp;dpi=300" width="320" height="240"></div>
+    </div>
+  </section>
+
+  <section id="developers" class="wrap">
+    <h2>For developers</h2>
+    <p class="sub">The reference code is published as is from <code>qr.tigertag.io</code>, with no dependency. Implementing these links and labels needs no licence and no payment.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>TypeScript: read and build</h3>
+<pre><code>import { parseQrPath, splitLangPrefix } from "./src/parse";
+import { productLink, spoolLink, qrLinkFrom } from "./src/links";
+
+const { lang, path } = splitLangPrefix("/fr/p/2673739332");
+parseQrPath(path);
+// { kind: "product", idProduct: 2673739332,
+//   hex: "9f5e0644", format: "page" }
+
+productLink(10303748);
+// "https://qr.tigertag.io/p/0010303748"
+spoolLink("TigerData_6130922252");
+// "https://qr.tigertag.io/6130922252"
+qrLinkFrom("chip", "1D:33:DB:DA:0D:10:80");
+// { kind: "chip", link: "https://qr.tigertag.io/1d33dbda0d1080" }</code></pre>
+      </div>
+      <div class="card">
+        <h3>Test against the vectors</h3>
+        <p><a href="test-vectors/links.json"><code>test-vectors/links.json</code></a> lists every link shape with the exact answer: <code>read</code> (a path and what it names), <code>lang</code> (the language prefix), <code>build</code> (an id typed for a kind and the printed link), <code>spoolLink</code>, <code>productLink</code> and <code>sharedLink</code>.</p>
+<pre><code>git clone https://github.com/TigerTag-Project/TigerQR-Label
+cd TigerQR-Label
+node tools/check.mjs   # Node 22.13 or later</code></pre>
+        <p>A reader in another language passes when it gives every <code>expect</code> of the <code>read</code> and <code>lang</code> sections.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="join">
+      <div>
+        <h2>Make a label now</h2>
+        <p>The TigerQR Playground draws any catalogue product's TigerQR+ label in every format, as PNG at 203 or 300 dpi and as SVG.</p>
+      </div>
+      <a class="joinbtn" href="https://tigersystem.io/playground-tigerqr">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>
+        Open the TigerQR Playground
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Related</h2>
+    <ul class="comm">
+      <li><a href="https://tigersystem.io/en/tiger-qr-labels">TigerQR labels on tigersystem.io</a><span>The labels explained, and a link generator.</span></li>
+      <li><a href="https://tigersystem.io/playground-tigerqr">TigerQR Playground</a><span>Every format of a catalogue product's label, PNG and SVG.</span></li>
+      <li><a href="https://wiki.tigersystem.io/developers/spool-ids-and-qr-links/">Spool ids and QR links</a><span>The full contract, with every edge case.</span></li>
+      <li><a href="https://tigertag-project.github.io/TigerTag-RFID-Guide/">TigerTag protocol</a><span>The open NFC chip protocol the labels sit beside.</span></li>
+      <li><a href="https://github.com/TigerTag-Project/TigerTag-Studio-Manager">Tiger Studio</a><span>Prints the Spool Label and the Filament Label.</span></li>
+      <li><a href="https://tigersystem.io/en/embed">Label widget and API</a><span>Frame a product's label on any site.</span></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>Documentation and examples: <a href="https://github.com/TigerTag-Project/TigerQR-Label/blob/main/LICENSING.md">CC-BY-4.0</a>. Code in <code>src/</code>: Apache-2.0. TigerTag, TigerTag+, TigerQR and TigerQR+ are marks of the TigerTag Project.</p>
+    <p><a href="https://github.com/TigerTag-Project/TigerQR-Label">github.com/TigerTag-Project/TigerQR-Label</a> · <a href="https://tigersystem.io">tigersystem.io</a> · <a href="llms.txt">llms.txt</a></p>
+  </div>
+</footer>
+</body>
+</html>

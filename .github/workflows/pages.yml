@@ -1,0 +1,75 @@
+name: Publish the reference site
+
+# Builds the site (tools/build-site.mjs: site/, the reference code of src/, the
+# examples, the illustrations, the test vectors) and publishes it on GitHub Pages:
+# https://tigertag-project.github.io/TigerQR-Label/
+#
+# Exactly one workflow deploys this site, and this is it.
+# Prerequisite, once: Settings > Pages > Source = "GitHub Actions".
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'src/**'
+      - 'examples/**'
+      - 'assets/**'
+      - 'brand/**'
+      - 'test-vectors/**'
+      - 'tools/**'
+      - 'llms.txt'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      # The reference code against every test vector, the documents against their links.
+      - name: Check
+        run: node --no-warnings tools/check.mjs
+
+      - name: Build the site
+        run: node --no-warnings tools/build-site.mjs --out _site
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+      # The published result, not this workflow's green tick.
+      - name: The published site answers
+        run: |
+          set -euo pipefail
+          base="${{ steps.deploy.outputs.page_url }}"
+          for path in "" site.css app.js js/parse.js js/links.js examples/filament/label-classic-40x30.svg test-vectors/links.json llms.txt; do
+            for i in 1 2 3 4 5 6; do
+              code=$(curl -s -o /dev/null -w '%{http_code}' "${base}${path}") && [ "$code" = 200 ] && break
+              sleep 10
+            done
+            echo "${base}${path} -> ${code}"
+            [ "$code" = 200 ]
+          done
