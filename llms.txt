@@ -9,10 +9,16 @@
 - Add .json (data) or .ttag (Tiger Studio import file) to any link. On a spool link, a non-owner is redirected (303) to the product's .json / .ttag.
 - Shared (not printed) links may carry the sharer's language: https://qr.tigertag.io/<lang>/p/<id>, lang one of en fr de es it zh pt pt-pt pl ru nl.
 - Nine label formats: classic 40x30, expanded 50x30, compact 40x25, slim 40x12, slicer 40x30, vertical 30x40, verticalBold 30x40, verticalCompact 25x40, qrOnly 25x30 (mm). QR in one byte segment, ECC M, whole printer dots per module, 203 or 300 dpi.
-- Label of any catalogue product: https://tigersystem.io/api/public/v1/label/<id>.svg?template=<format>&dpi=<203|300>
+- Label pill: TigerQR+ when the label's reference is a catalogue product or a TigerTag+ chip (every Filament Label), else TigerQR. Two kinds of label: the Spool Label (its QR is the spool link) and the Filament Label (its QR is the product link).
+- Label of any catalogue product: https://tigersystem.io/api/public/v1/label/<id>.svg?template=<format>&dpi=<203|300> (also <id>.json: what it prints and its link; <id>.html: a widget to frame).
+- Every format of a catalogue product's label, PNG and SVG: the TigerQR Playground, https://tigersystem.io/playground-tigerqr
 
 ## Docs
+- [Reference site](https://tigertag-project.github.io/TigerQR-Label/)
+- [README](https://github.com/TigerTag-Project/TigerQR-Label/blob/main/README.md)
 - [Links](https://github.com/TigerTag-Project/TigerQR-Label/blob/main/spec/links.md)
 - [Label formats](https://github.com/TigerTag-Project/TigerQR-Label/blob/main/spec/labels.md)
 - [Test vectors](https://github.com/TigerTag-Project/TigerQR-Label/blob/main/test-vectors/links.json)
 - [Full link contract](https://wiki.tigersystem.io/developers/spool-ids-and-qr-links/)
+- [TigerQR labels on tigersystem.io](https://tigersystem.io/en/tiger-qr-labels)
+- [TigerQR Playground](https://tigersystem.io/playground-tigerqr)
