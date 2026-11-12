@@ -1,0 +1,29 @@
+name: Check
+
+# The reference code against every test vector, the documents against their
+# links, no emoji, and the site builds. On every pull request and every push to main.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Test vectors, links, no emoji
+        run: node --no-warnings tools/check.mjs
+      - name: The site builds
+        run: node --no-warnings tools/build-site.mjs --out _site
